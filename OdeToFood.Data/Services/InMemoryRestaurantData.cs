@@ -18,6 +18,17 @@ namespace OdeToFood.Data.Services
                 new Restaurant { Id = 3, Name = "Croissant du soleil", Cuisine = CuisineType.French}
             };
         }
+
+        public void Add(Restaurant restaurant)
+        {
+            restaurants.Add(restaurant);
+            restaurant.Id = restaurants.Max(r => r.Id) + 1;
+        }
+        public Restaurant Get(int id)
+        {
+            return restaurants.FirstOrDefault(r => r.Id == id);
+        }
+
         public IEnumerable<Restaurant> GetAll()
         {
             return restaurants.OrderBy(r => r.Name);

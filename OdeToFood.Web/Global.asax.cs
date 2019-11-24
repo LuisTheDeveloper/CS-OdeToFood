@@ -7,6 +7,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Http;
 using System.Web.Routing;
+using Autofac.Integration.Mvc;
 
 namespace OdeToFood.Web
 {
@@ -19,7 +20,8 @@ namespace OdeToFood.Web
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            ContainerConfig.RegisterContainer();
+            ContainerConfig.RegisterContainer(GlobalConfiguration.Configuration);
+
         }
     }
 }
